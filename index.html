@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="theme-color" content="#F6EFE7">
+    <meta name="description" content="Une petite invitation...">
+    <title>Pour toi ❤️</title>
+
+    <link rel="icon" type="image/png" href="favicon.png">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Fond global -->
+    <div class="bg-layer" id="bgLayer" aria-hidden="true">
+        <div class="bg-overlay"></div>
+    </div>
+
+    <!-- Particules subtiles -->
+    <div class="particles" id="particles" aria-hidden="true"></div>
+
+    <!-- Contrôle audio -->
+    <button class="audio-toggle" id="audioToggle" type="button" aria-label="Lecture ou pause de la musique">
+        <span class="audio-icon" id="audioIcon">♫</span>
+    </button>
+
+    <main class="app">
+
+        <!-- ÉCRAN 1 : Introduction avec Enveloppe interactive -->
+        <section class="screen screen-intro is-active" data-screen="1" aria-label="Introduction">
+            <div class="envelope-container" id="envelopeContainer">
+                <div class="envelope" id="envelope">
+                    <div class="envelope-back"></div>
+                    
+                    <!-- Lettre qui sort de l'enveloppe -->
+                    <div class="envelope-letter" id="envelopeLetter">
+                        <span class="label">POUR TOI ❤️</span>
+                        <h1 class="title">J'ai une petite<br>proposition à te faire…</h1>
+                        <button class="btn-discover" id="btnDiscover" type="button">
+                            <span>découvrir</span>
+                            <span class="arrow">↓</span>
+                        </button>
+                    </div>
+
+                    <!-- Poche avant de l'enveloppe -->
+                    <div class="envelope-pocket"></div>
+
+                    <!-- Rabat supérieur -->
+                    <div class="envelope-flap" id="envelopeFlap"></div>
+
+                    <!-- Sceau de cire / Cœur -->
+                    <button class="envelope-seal" id="envelopeSeal" type="button" aria-label="Ouvrir la lettre">
+                        <span class="seal-heart">💌</span>
+                        <span class="seal-glow"></span>
+                    </button>
+                </div>
+                <p class="envelope-hint" id="envelopeHint">✨ Touche la lettre pour l'ouvrir ✨</p>
+            </div>
+        </section>
+
+        <!-- ÉCRAN 2 : La question -->
+        <section class="screen screen-question" data-screen="2" aria-label="Question">
+            <div class="card">
+                <span class="label">UNE PETITE QUESTION...</span>
+                <h2 class="title">Ça te dit un<br>pique-nique avec moi ?</h2>
+                <p class="subtitle">Juste toi, moi,<br>la lagune et un joli coucher de soleil.</p>
+
+                <div class="buttons-row">
+                    <button class="btn btn-yes" id="btnYes" type="button">OUI ❤️</button>
+                    <button class="btn btn-no" id="btnNo" type="button">Non</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- ÉCRAN 3 : Le plan -->
+        <section class="screen screen-plan" data-screen="3" aria-label="Le plan">
+            <div class="card">
+                <span class="label">ALORS... ❤️</span>
+                <h2 class="title">J'ai prévu quelque chose<br>de tout simple.</h2>
+                <p class="subtitle">Un petit pique-nique<br>au bord de la lagune.</p>
+
+                <div class="image-frame">
+                    <div class="image-placeholder" id="lagoonImage">
+                        <span>🌅</span>
+                    </div>
+                </div>
+
+                <div class="info-block">
+                    <span class="info-date" id="selectedDateDisplay">SAMEDI OU DIMANCHE PROCHAIN</span>
+                    <span class="info-time" id="selectedTimeDisplay">16:30</span>
+                    <span class="info-place">Au bord de la lagune</span>
+                    <p class="info-text">Un plaid, quelques gourmandises,<br>une jolie vue et nous deux.</p>
+                </div>
+
+                <!-- Sélecteur de jour -->
+                <div class="picker-section">
+                    <span class="picker-label">Choisis ton jour préféré :</span>
+                    <div class="day-picker">
+                        <button class="day-btn is-selected" data-day="Samedi" type="button">
+                            <span class="day-name">Samedi</span>
+                            <span class="day-sub">prochain</span>
+                        </button>
+                        <button class="day-btn" data-day="Dimanche" type="button">
+                            <span class="day-name">Dimanche</span>
+                            <span class="day-sub">prochain</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Sélecteur d'heure -->
+                <div class="picker-section">
+                    <span class="picker-label">L'heure idéale :</span>
+                    <div class="time-picker">
+                        <button class="time-btn" data-time="16:00" type="button">16:00</button>
+                        <button class="time-btn is-selected" data-time="16:30" type="button">16:30</button>
+                        <button class="time-btn" data-time="17:00" type="button">17:00</button>
+                    </div>
+                </div>
+
+                <input type="text" class="personal-message" id="personalMessage"
+                       placeholder="Écris-moi quelque chose si tu veux..."
+                       maxlength="140" autocomplete="off">
+
+                <button class="btn btn-confirm" id="btnConfirm" type="button">
+                    J'ACCEPTE LE PIQUE-NIQUE ❤️
+                </button>
+            </div>
+        </section>
+
+        <!-- ÉCRAN 4 : Confirmation -->
+        <section class="screen screen-final" data-screen="4" aria-label="Confirmation">
+            <div class="card card-final">
+                <div class="heart-circle">♥</div>
+                <span class="label">C'EST NOTÉ</span>
+                <h2 class="title">
+                    <span id="finalDay">Samedi prochain</span><br>
+                    <span id="finalTime">à 16:30</span>
+                </h2>
+                <p class="subtitle">La lagune nous attend.</p>
+                <p class="text">J'ai hâte de partager<br>ce petit moment avec toi.</p>
+                <p class="text text-accent">Et promis...<br>je ramène les gourmandises. ❤️</p>
+
+                <!-- Bouton WhatsApp -->
+                <a class="btn btn-whatsapp" id="btnWhatsApp" href="#" target="_blank" rel="noopener noreferrer">
+                    <span class="whatsapp-icon">💬</span>
+                    <span>ENVOYER MA RÉPONSE SUR WHATSAPP</span>
+                </a>
+
+                <button class="btn btn-calendar" id="btnCalendar" type="button">
+                    AJOUTER À MON CALENDRIER
+                </button>
+
+                <p class="signature">À très vite.</p>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Audio -->
+    <audio id="bgMusic" loop preload="auto">
+        <source src="assets/music/thinking-out-loud.mp3" type="audio/mpeg">
+    </audio>
+
+    <script src="script.js"></script>
+</body>
+</html>
